@@ -1,0 +1,7 @@
+# 适配市场份额大于百分之1的浏览器
+# > 1%
+# 前两个版本
+# last 2 versions
+# not dead
+Android >= 4.0
+iOS >= 8
