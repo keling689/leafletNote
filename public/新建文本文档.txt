@@ -1,0 +1,12 @@
+modified:   src/components/MainDrawer/DrawerForm/DrawerForm.vue
+        modified:   src/components/MainDrawer/index.vue
+        modified:   src/components/MainTable/ButtonBar/ButtonList.vue
+        modified:   src/components/MainTable/index.vue
+        modified:   src/components/layout/index.vue
+        modified:   src/pages/Login/index.vue
+        modified:   src/pages/home/collectAndEdit/views/DataReview/data.js
+        modified:   src/pages/home/collectAndEdit/views/DataReview/index.vue
+        modified:   src/pages/home/collectAndEdit/views/TaskManage/EditorialRecord/data.js
+        modified:   src/pages/home/collectAndEdit/views/TaskManage/EditorialRecord/index.vue
+        modified:   src/pages/home/collectAndEdit/views/TaskManage/TaskList/index.vue
+        modified:   src/utils/common.js
