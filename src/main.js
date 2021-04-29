@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import store from './store'
 
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
@@ -19,5 +20,6 @@ Vue.prototype.$turf = turf
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

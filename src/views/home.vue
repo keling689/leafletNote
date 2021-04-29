@@ -5,12 +5,59 @@
     <div id="map"></div>
 </template>
 <script>
-import { drawMarker } from '@/utils'
+// import { drawMarker } from '@/utils'
 export default {
   name: 'mapView',
+  props: {},
   data () {
     return {
-      mapView: null
+      mapView: null,
+      defaultPoint: [22.629519605146683, 114.05533790588379],
+      defaultLine: [
+        [
+          22.6412242700425,
+          114.05482292175293
+        ],
+        [
+          22.63322321946228,
+          114.0555953979492
+        ],
+        [
+          22.63330244006855,
+          114.05216217041016
+        ],
+        [
+          22.630173191395897,
+          114.05241966247559
+        ],
+        [
+          22.631321911211117,
+          114.048171043396
+        ]
+      ],
+      defaultBox:
+       [
+         [
+           22.64039249935804,
+           114.04400825500488
+         ],
+         [
+           22.623161831305342,
+           114.04422283172607
+         ],
+         [
+           22.624587899615936,
+           114.061861038208
+         ],
+         [
+           22.640709364974562,
+           114.06516551971434
+         ],
+         [
+           22.64039249935804,
+           114.04400825500488
+         ]
+       ]
     }
   },
   created () {
@@ -26,7 +73,7 @@ export default {
         zoom: 12,
         minZoom: 1,
         maxZoom: 25,
-        center: [39.550339, 116.114129],
+        center: this.defaultPoint,
         zoomControl: false, // 左上角的加减缩小放大图标是否隐藏
         attributionControl: false, // 下方跳转链接是否展示
         crs: this.$L.CRS.EPSG3857,
@@ -40,10 +87,46 @@ export default {
       console.log('创建leaflet')
     },
     addLayers () {
-      const point = [39.550339, 116.114129]
-      drawMarker(this.$L, this.mapView, point)
-      this.$L.marker(point).addTo(this.mapView)
-      // this.$L.
+      this.addMarker()
+      this.addLine()
+      this.addBox()
+      this.addCircle()
+    },
+    addMarker () {
+      const point = this.defaultPoint
+      // drawMarker(this.$L, this.mapView, point)
+      const marker = this.$L.marker(point, { icon: this.createIcion() }).addTo(this.mapView)
+      console.log(marker)
+      // this.mapView.setView(point, 17, {})
+    },
+    addLine () {
+      const line = this.defaultLine
+      const polyline = this.$L.polyline(line, { color: 'blue' }).addTo(this.mapView)
+      console.log(polyline)
+      // this.mapView.fitBounds(polyline.getBounds())
+    },
+    addBox () {
+      const box = this.defaultBox
+      const polygon = this.$L.polygon(box, { color: 'red' }).addTo(this.mapView)
+      console.log(polygon)
+      // this.mapView.fitBounds(polygon.getBounds())
+    },
+    addCircle () {
+      const circlePoint = this.defaultPoint
+      const circle = this.$L.circle(circlePoint, { radius: 100 }).addTo(this.mapView)
+      console.log(circle)
+      // this.mapView.fitBounds(circle.getBounds())
+    },
+    createIcion () {
+      return this.$L.icon({
+        iconUrl: require('@/assets/img/dian.png'),
+        iconSize: [20, 20],
+        // iconAnchor: [0, 0],
+        popupAnchor: [-3, -76]
+      })
+    },
+    geoJSON () {
+
     }
   }
 }
